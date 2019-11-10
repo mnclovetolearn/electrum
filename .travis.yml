@@ -28,14 +28,14 @@ jobs:
   include:
     - name: "Regtest functional tests"
       before_install:
-        - sudo add-apt-repository -y ppa:bitcoin/bitcoin
+        - sudo add-apt-repository -y ppa:mincoin/mincoin
         - sudo apt-get -qq update
-        - sudo apt-get install -yq bitcoind
+        - sudo apt-get install -yq mincoind
       install:
         - pip install -r contrib/requirements/requirements.txt
         - pip install electrumx
       before_script:
-          - electrum/tests/regtest/start_bitcoind.sh
+          - electrum/tests/regtest/start_mincoind.sh
           - electrum/tests/regtest/start_electrumx.sh
       script:
         - python -m unittest electrum/tests/regtest.py
